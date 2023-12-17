@@ -1,0 +1,19 @@
+.navigation-bar {
+    background-color: #fffff;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: lightgrey;
+}
+
+.navigation-bar-buttons {
+    color: black;
+    width: 6vw;
+    text-align: center;
+    font-weight: bold;
+}
+
+.navigation-bar-buttons:hover {
+    color: lightgrey;
+    text-decoration: underline;
+    text-decoration-color: blue;
+}
