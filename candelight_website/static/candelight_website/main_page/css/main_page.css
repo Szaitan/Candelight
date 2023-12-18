@@ -10,14 +10,14 @@
 
 .carousel-caption {
     position: absolute;
-    top: 30%;
-    left: 14%;
+    top: 29%;
+    left: 54%;
     transform: translate(2%, 2%);
     color: #fff; /* Set the color of the text */
     text-align: left; /* Center the text */
-    max-width: 500px;
+    max-width: 400px;
     height: 12vh;
-    font-size: 20px;
+    font-size: 17px;
     font-weight: bold;
 }
 
@@ -34,11 +34,11 @@
 
 .empty-room-text {
     position: absolute;
-    max-width: 500px;
+    max-width: 400px;
     height: 12vh;
     top: 30%;
-    right: 14%;
+    left: 14%;
     color: black;
-    font-size: 20px;
+    font-size: 17px;
     font-weight: bold;
 }
