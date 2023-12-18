@@ -6,4 +6,4 @@ from django.views import View
 
 class IndexPageView(View):
     def get(self, request):
-        return render(request, "candelight_website/index_page.html")
+        return render(request, "candelight_website/main_page.html")
