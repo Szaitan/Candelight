@@ -15,3 +15,11 @@ class IndexPageView(View):
         return render(request, "candelight_website/main_page.html", {
             "year": year
         })
+
+
+class AboutPageView(View):
+    def get(self, request):
+        year = get_date()
+        return render(request, "candelight_website/about_page.html", {
+            "year": year,
+        })
