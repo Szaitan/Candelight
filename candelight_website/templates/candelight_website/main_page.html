@@ -74,9 +74,11 @@
             </div>
         </div>
         <div class="col-lg-6 right-side-split">
-            <img src="{% static 'candelight_website/main_page/images/Galeria-Mokotów.jpg' %}" class="split-first-img" alt="split-left-img">
+            <img src="{% static 'candelight_website/main_page/images/main-page-contact-img.jpg' %}" class="split-first-img" alt="split-left-img">
         </div>
     </div>
 </div>
+
+{% include "candelight_website/footer.html" %}{% with year=year%}{% endwith%}
 
 {% endblock %}

@@ -18,3 +18,24 @@
     text-decoration: underline;
     text-decoration-color: red;
 }
+
+.footer-bar {
+    background-color: black;
+    color: #fff;
+}
+
+.footer-bar-buttons {
+    color: white;
+    text-align: center;
+    font-size: 12px;
+}
+
+.footer-bar-buttons:hover {
+    color: red;
+    text-decoration: underline;
+    text-decoration-color: red;
+}
+
+.footer-logo {
+    color: white;
+}
