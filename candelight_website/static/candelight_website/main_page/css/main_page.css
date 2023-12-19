@@ -10,14 +10,14 @@
 
 .carousel-caption {
     position: absolute;
-    top: 29%;
-    left: 54%;
+    top: 25%;
+    left: 57%;
     transform: translate(2%, 2%);
     color: #fff; /* Set the color of the text */
     text-align: left; /* Center the text */
     max-width: 400px;
     height: 12vh;
-    font-size: 17px;
+    font-size: 14px;
     font-weight: bold;
 }
 
@@ -37,8 +37,59 @@
     max-width: 400px;
     height: 12vh;
     top: 30%;
+    left: 15%;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.split-first-img {
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+}
+
+.row {
+margin: 0px;
+}
+
+.left-side-split {
+padding: 0px;
+}
+
+.split-first-text-div {
+    height: 60vh;
+    position: relative;
+}
+
+.split-first-text {
+    position: absolute;
+    max-width: 400px;
+    height: 12vh;
+    top: 33%;
     left: 14%;
     color: black;
-    font-size: 17px;
+    font-size: 14px;
     font-weight: bold;
+}
+
+.right-side-split {
+padding: 0px;
+}
+
+.split-second-text-div {
+    height: 60vh;
+    position: relative;
+}
+
+.split-second-text {
+    position: absolute;
+    max-width: 400px;
+    height: 12vh;
+    top: 33%;
+    left: 25%;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 8px;
 }
