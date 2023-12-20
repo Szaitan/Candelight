@@ -1,0 +1,78 @@
+h5, p {
+margin: 15px 0;
+padding: 5px 0;
+text-align: justify;
+}
+
+.odd-div {
+    background-color: white;
+}
+
+.even-div {
+    background-color: #F0F5F9;
+}
+
+.first-div {
+    height: 40vh;
+}
+
+.first-div-img {
+    width: 100%;
+    height: 40vh;
+    object-fit: fill;
+}
+
+.row {
+margin: 0px;
+}
+
+.split-first-img {
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+}
+
+.left-side-split {
+padding: 0px;
+}
+
+.split-first-text-div {
+    height: 60vh;
+    position: relative;
+    text-align: justify;
+}
+
+.split-first-text {
+    position: absolute;
+    max-width: 400px;
+    height: 12vh;
+    top: 33%;
+    left: 14%;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: justify;
+}
+
+.right-side-split {
+padding: 0px;
+}
+
+.split-second-text-div {
+    height: 60vh;
+    position: relative;
+    text-align: justify;
+}
+
+.split-second-text {
+    position: absolute;
+    max-width: 400px;
+    height: 12vh;
+    top: 33%;
+    left: 25%;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 8px;
+    text-align: justify;
+}

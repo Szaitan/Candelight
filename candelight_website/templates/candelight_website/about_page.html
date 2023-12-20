@@ -4,10 +4,83 @@
 {% block title %}About Us{% endblock %}
 
 {% block css_files %}
-
+    <link rel="stylesheet" href="{% static 'candelight_website/about_page/css/about_page.css' %}">
 {% endblock %}
 
 {% block content %}
-{% include "candelight_website/header.html" %}
+<div class="container">
+    <div class="row">
+        {% include "candelight_website/header.html" %}
+    </div>
+</div>
+
+<div class="first-div odd-div">
+    <div class="container">
+        <img src="{% static 'candelight_website/about_page/images/beautiful-modern-building-modern-architecture.jpg' %}" class="first-div-img" alt="about-page-first-img">
+    </div>
+</div>
+
+<div class="even-div">
+    <div class="container">
+        <p>At Candelight, we are the architects of brilliance, the creators of illumination, and the purveyors of cutting-edge LED lighting solutions.
+            With a passion for innovation and a commitment to excellence, we design, implement, manufacture, and deliver a diverse array of professional lighting solutions tailored for architectural, industrial, commercial, and urban environments.
+            Our products span a wide spectrum of lighting applications, offering versatile configurations to meet the most challenging lighting needs.
+            Candelight is dedicated to developing, producing, and globally distributing top-tier lighting solutions.
+            Our mission echoes the pursuit of sustainable lighting solutions that not only enhance performance but also elevate the well-being of individuals.</p>
+
+            <h5>High Octane Performance and User-Centric Design:</h5>
+            <p>Our solutions are meticulously crafted to fuse high performance with sustainable development, all wrapped in a cloak of simplicity and user-friendliness.
+            We bring together the latest technologies with years of expertise and a genuine concern for our customers and their teams.
+            We redefine the landscape of lighting, ensuring our solutions stand out for their excellence in performance and ease of use.</p>
+
+            <h5>Premium Brands and Tailored Support:</h5>
+            <p>Within our portfolio, you'll find an array of high-quality lighting brands.
+            However, beyond the brands, our core focus lies in understanding the unique needs of our customers.
+            Be it in a bustling production facility or a contemporary office space, our ambition is to deliver lighting that not only meets but surpasses the expectations of our clients.
+            We are driven by the goal of enhancing the quality of life in the businesses we serve and creating inviting environments for the individuals who work within them.</p>
+
+            <p>Candelight — where innovation meets brilliance, and lighting becomes an art form.</p>
+    </div>
+</div>
+
+<div class="odd-div">
+    <div class="container">
+        <h5>This is what is pushing us forward </h5>
+        <p>Cutting-edge lighting solutions play a pivotal role across the diverse tapestry of our lives. At its core, it's a story about people. Whether in a bustling factory, aboard a maritime vessel, or nestled within the confines of a corporate office, lighting ought to be a source of advantage for those who inhabit these spaces – elevating their work environment and nurturing a positive sense of well-being.
+            We strategically leverage state-of-the-art technology to orchestrate the perfect interplay of light and time, amplifying energy efficiency while treading lightly on the environmental stage. This ethos propels us forward at Candelight, encapsulated in our overarching vision and mission.
+            Our compass is calibrated by four fundamental values that serve as the bedrock of our identity and govern how we navigate the terrain of our operations. These principles underscore our unwavering commitment to crafting lighting solutions that transcend mere functionality, enriching the human experience across various landscapes.
+            At Candelight, our allegiance to innovation and sustainability isn't a mere promise; it's a radiant expedition towards a more enlightened and conscientious future.</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 left-side-split">
+            <img src="{% static 'candelight_website/main_page/images/Galeria-Mokotów.jpg' %}" class="split-first-img" alt="split-left-img">
+        </div>
+        <div class="col-lg-6 split-first-text-div">
+            <div class="split-first-text">
+                <p>Lorem ipsum dolor sit amet</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 split-second-text-div">
+            <div class="split-second-text">
+                <p>Lorem ipsum dolor sit amet</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+        </div>
+        <div class="col-lg-6 right-side-split">
+            <img src="{% static 'candelight_website/main_page/images/main-page-contact-img.jpg' %}" class="split-first-img" alt="split-left-img">
+        </div>
+    </div>
+</div>
+
+
 {% include "candelight_website/footer.html" %}
 {% endblock %}

@@ -14,8 +14,8 @@
 }
 
 .navigation-bar-buttons:hover {
-    color: lightgrey;
     text-decoration: underline;
+    text-decoration-thickness: 2px;
     text-decoration-color: red;
 }
 
