@@ -12,8 +12,16 @@ def get_date():
 
 
 def get_realizations(request, type_id):
-    realizations = RealisationsProject.objects.filter(category_id=type_id)
-    realization_data = [{'title': realization.title, 'description': realization.description, 'image_url': realization.image.url} for realization in realizations]
+
+    if type_id is not None and type_id != 0:
+        realizations = RealisationsProject.objects.filter(category_id=type_id)
+    else:
+        realizations = RealisationsProject.objects.all()
+
+    realization_data = [{'title': realization.title,
+                         'category': str(realization.category),
+                         'description': realization.description,
+                         'image_url': realization.image.url} for realization in realizations]
     return JsonResponse(realization_data, safe=False)
 
 
@@ -37,7 +45,10 @@ class RealisationsPageView(View):
     def get(self, request):
         button_types = RealisationsType.objects.all()
         realization_data = [
-            {'title': realization.title, 'description': realization.description, 'image_url': realization.image.url} for
+            {'title': realization.title,
+             'category': realization.category,
+             'description': realization.description,
+             'image_url': realization.image.url} for
             realization in RealisationsProject.objects.all()]
 
         return render(request, "candelight_website/realisations_page.html", {

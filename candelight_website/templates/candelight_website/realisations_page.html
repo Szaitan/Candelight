@@ -28,18 +28,23 @@
 <hr>
 
 <div class="container">
+    <button class="btn btn-outline-dark realization-type-btn" data-type-id="all">All</button>
     {% for type in button_types %}
-        <button class="realization-type-btn" data-type-id="{{ type.id }}">{{ type.type }}</button>
+        <button class="btn btn-outline-dark realization-type-btn" data-type-id="{{ type.id }}">{{ type.type }}</button>
     {% endfor %}
 </div>
 <hr>
 
 <div class="container realizations-container">
-    {% for data in realization_data %}
-        <p>{{ data.title }}</p>
-        <p>{{ data.description }}</p>
-        <p>{{ data.image_url }}</p>
-    {% endfor %}
+    <div class="row this-row">
+        {% for data in realization_data %}
+        <div class="col-lg-3">
+            <img src="{{data.image_url}}" class="realisation-image mx-auto d-flex" alt="Realization-Image">
+            <h5 class="objects-text">{{ data.title }}</h5>
+            <p class="realisation-text">{{ data.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 
 {% include "candelight_website/footer.html" %}
@@ -48,21 +53,29 @@
     $(document).ready(function() {
         $('.realization-type-btn').click(function() {
             var typeId = $(this).data('type-id');
+
+            // Handle "All" button separately
+            if (typeId === 'all') {
+                typeId = 0; // Set a value to indicate no filtering
+            }
+
+            console.log("Type ID sent in AJAX request:", typeId);
+
             $.ajax({
                 url: `/get_realizations/${typeId}/`,
                 type: 'GET',
                 dataType: 'json',
                 success: function(data) {
                     // Clear existing content in the container
-                    $('.realizations-container').empty();
+                    $('.this-row').empty();
 
                     // Iterate through the fetched data and append it to the container
                     for (var i = 0; i < data.length; i++) {
-                        $('.realizations-container').append(`
-                            <div class="realization-item">
-                                <p>Title: ${data[i].title}</p>
-                                <p>Description: ${data[i].description}</p>
-                                <img src="${data[i].image_url}" alt="Realization Image">
+                        $('.this-row').append(`
+                            <div class="col-lg-3">
+                                <img src="${data[i].image_url}" class="realisation-image mx-auto d-flex" alt="Realization Image">
+                                <h5 class="objects-text">${data[i].title}</h5>
+                                <p class="realisation-text">${data[i].description}</p>
                             </div>
                         `);
                     }

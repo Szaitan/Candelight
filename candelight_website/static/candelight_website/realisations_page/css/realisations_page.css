@@ -7,3 +7,26 @@
     text-align: justify;
     margin: 15px 0px;
 }
+
+.realisation-image {
+    width: 310px;
+    height: 310px;
+    transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
+}
+
+.realisation-image:hover {
+    transform: scale(1.05); /* Increase the scale on hover (adjust the value as needed) */
+}
+
+.realisation-text {
+    text-align: justify;
+}
+
+.objects-text {
+    margin: 10px 0px;
+    font-weight: bold;
+}
+
+.realization-type-btn {
+    margin: 5px;
+}
