@@ -7,19 +7,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link navigation-bar-buttons" aria-current="page" href="{% url 'about_page'%}">About</a>
+                    <a class="nav-link navigation-bar-buttons {% if request.path == '/about-us' %}nav-picked-button{% endif %}" aria-current="page" href="{% url 'about_page'%}">About</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link navigation-bar-buttons" href="#">Products</a>
+                    <a class="nav-link navigation-bar-buttons {% if request.path == '/products' %}nav-picked-button{% endif %}" href="#">Products</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link navigation-bar-buttons" href="{% url 'realisations_page' %}">Realisations</a>
+                    <a class="nav-link navigation-bar-buttons {% if request.path == '/realisations' %}nav-picked-button{% endif %}" href="{% url 'realisations_page' %}">Realisations</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link navigation-bar-buttons" href="#">Contact</a>
+                    <a class="nav-link navigation-bar-buttons {% if request.path == '/contact' %}nav-picked-button{% endif %}" href="#">Contact</a>
                 </li>
             </ul>
+        </div>
     </div>
-  </div>
 </nav>
 

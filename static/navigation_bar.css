@@ -41,3 +41,9 @@
     font-size: 20px;
     margin: 0px;
 }
+
+.nav-picked-button {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-color: red;
+}

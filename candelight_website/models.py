@@ -13,7 +13,7 @@ class RealisationsType(models.Model):
 class RealisationsProject(models.Model):
     title = models.CharField(max_length=75)
     category = models.ForeignKey(RealisationsType, on_delete=models.CASCADE)
-    description = models.TextField(max_length=100)
+    description = models.TextField(max_length=450)
     image = models.ImageField(upload_to="realisations_images", null=True)
 
     def delete(self, *args, **kwargs):

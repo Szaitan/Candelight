@@ -36,6 +36,7 @@ class IndexPageView(View):
 class AboutPageView(View):
     def get(self, request):
         year = get_date()
+        print(request.path)
         return render(request, "candelight_website/about_page.html", {
             "year": year,
         })
@@ -43,6 +44,7 @@ class AboutPageView(View):
 
 class RealisationsPageView(View):
     def get(self, request):
+        year = get_date()
         button_types = RealisationsType.objects.all()
         realization_data = [
             {'title': realization.title,
@@ -53,6 +55,7 @@ class RealisationsPageView(View):
 
         return render(request, "candelight_website/realisations_page.html", {
             "button_types": button_types,
-            "realization_data": realization_data
+            "realization_data": realization_data,
+            "year": year
         })
 
