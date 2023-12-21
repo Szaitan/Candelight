@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Realisations{% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'candelight_website/realisations_page/css/realisations_page.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="navigation-bar">
+    <div class="container">
+        <div class="row">
+            {% include "candelight_website/header.html" %}
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <h3 class="intro-title">Realisations</h3>
+    <p class="intro-text">From conceptualization to illumination, each project represents a harmonious blend of creativity, innovation, and
+        technical expertise. Immerse yourself in the artistry of light as we unveil the real-world impact of our bespoke
+        lighting solutions. Explore how our team transforms visions into captivating and functional environments.
+        Join us on a journey through our realized projects, where every flicker tells a story of ingenuity
+        and brilliance.</p>
+</div>
+<hr>
+
+<div class="container">
+    {% for type in button_types %}
+        <button class="realization-type-btn" data-type-id="{{ type.id }}">{{ type.type }}</button>
+    {% endfor %}
+</div>
+<hr>
+
+<div class="container realizations-container">
+    {% for data in realization_data %}
+        <p>{{ data.title }}</p>
+        <p>{{ data.description }}</p>
+        <p>{{ data.image_url }}</p>
+    {% endfor %}
+</div>
+
+{% include "candelight_website/footer.html" %}
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.realization-type-btn').click(function() {
+            var typeId = $(this).data('type-id');
+            $.ajax({
+                url: `/get_realizations/${typeId}/`,
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    // Clear existing content in the container
+                    $('.realizations-container').empty();
+
+                    // Iterate through the fetched data and append it to the container
+                    for (var i = 0; i < data.length; i++) {
+                        $('.realizations-container').append(`
+                            <div class="realization-item">
+                                <p>Title: ${data[i].title}</p>
+                                <p>Description: ${data[i].description}</p>
+                                <img src="${data[i].image_url}" alt="Realization Image">
+                            </div>
+                        `);
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
+
