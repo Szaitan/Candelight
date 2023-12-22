@@ -17,13 +17,17 @@
 </div>
 
 
-<div class="container">
-    <h3 class="intro-title">Realisations</h3>
-    <p class="intro-text">From conceptualization to illumination, each project represents a harmonious blend of creativity, innovation, and
+<div class="container first-container">
+    <img src="{% static 'candelight_website/realisations_page/images/realisation-first-image.jpg' %}" class="first-container-img" alt="realisation-first-image">
+    <div class="first-container-text">
+        <h1 class="intro-title my-4">Realisations</h1>
+        <p class="intro-text py-5">From conceptualization to illumination, each project represents a harmonious blend of creativity, innovation, and
         technical expertise. Immerse yourself in the artistry of light as we unveil the real-world impact of our bespoke
         lighting solutions. Explore how our team transforms visions into captivating and functional environments.
         Join us on a journey through our realized projects, where every flicker tells a story of ingenuity
         and brilliance.</p>
+    </div>
+
 </div>
 <hr>
 
@@ -38,7 +42,7 @@
 <div class="container realizations-container">
     <div class="row this-row">
         {% for data in realization_data %}
-        <div class="col-lg-3">
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
             <img src="{{data.image_url}}" class="realisation-image mx-auto d-flex" alt="Realization-Image">
             <h5 class="objects-text">{{ data.title }}</h5>
             <p class="realisation-text">{{ data.description }}</p>
@@ -52,14 +56,18 @@
 <script>
     $(document).ready(function() {
         $('.realization-type-btn').click(function() {
+            // Remove the 'active' class from all buttons
+            $('.realization-type-btn').removeClass('active');
+
+            // Add the 'active' class to the clicked button
+            $(this).addClass('active');
+
             var typeId = $(this).data('type-id');
 
             // Handle "All" button separately
             if (typeId === 'all') {
                 typeId = 0; // Set a value to indicate no filtering
             }
-
-            console.log("Type ID sent in AJAX request:", typeId);
 
             $.ajax({
                 url: `/get_realizations/${typeId}/`,

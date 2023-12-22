@@ -1,21 +1,45 @@
+.first-container {
+    height: 55vh;
+    position: relative;
+    overflow: hidden; /* Ensure the text doesn't overflow on smaller screens */
+}
+
+.first-container-img {
+    width: 100%;
+    height: 100%; /* Use 100% height to fill the container */
+    object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+}
+
+.first-container-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; /* Center the text */
+    max-width: 80%; /* Adjust max-width as needed */
+    color: black; /* Set text color to contrast with the image */
+}
+
 .intro-title {
     text-align: center;
     margin: 15px 0px;
+    font-size: 2em; /* Increase font size for better readability */
 }
 
 .intro-text {
     text-align: justify;
     margin: 15px 0px;
+    font-size: 1.2em;
 }
 
 .realisation-image {
-    width: 310px;
-    height: 310px;
-    transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
+    max-width: 100%;
+    height: auto; /* Allow the image to resize while maintaining aspect ratio */
+    transition: transform 0.3s ease-in-out;
 }
 
 .realisation-image:hover {
-    transform: scale(1.05); /* Increase the scale on hover (adjust the value as needed) */
+    transform: scale(1.05);
 }
 
 .realisation-text {
@@ -29,4 +53,18 @@
 
 .realization-type-btn {
     margin: 5px;
+}
+
+@media only screen and (max-width: 768px) {
+    .first-container-text {
+        max-width: 90%; /* Adjust max-width for smaller screens */
+    }
+
+    .intro-title {
+        font-size: 1.5em; /* Adjust font size for smaller screens */
+    }
+
+    .intro-text {
+        font-size: 0.7em; /* Adjust font size for smaller screens */
+    }
 }
