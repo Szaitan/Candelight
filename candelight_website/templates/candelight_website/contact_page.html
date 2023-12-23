@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contact{% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'candelight_website/contact_page/css/contact_page.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="navigation-bar">
+    <div class="container">
+        <div class="row">
+            {% include "candelight_website/header.html" %}
+        </div>
+    </div>
+</div>
+
+<div class="container first-container">
+    <img src="{% static 'candelight_website/realisations_page/images/realisation-first-image.jpg' %}" class="first-container-img" alt="realisation-first-image">
+    <div class="first-container-text">
+        <h1 class="intro-title my-4">How can we help?</h1>
+        <p class="intro-text py-5">If you are interested in our services, please contact us.</p>
+    </div>
+</div>
+<hr>
+
+<div class="container second-container">
+    <div class="row">
+        <div class="col-lg-6">
+            <h5>Main Office</h5>
+            <ul>
+                <li>
+                    <span>E-mail:</span><a class="email-link" href="mailto:m.krepiniewicz@gmail.com">m.krepiniewicz@gmail.com</a>
+                </li>
+                <li>
+                    <span>Phone:</span><span>+48 600 227 375</span>
+                </li>
+            </ul>
+        </div>
+    <div class="col-lg-6">
+        <p>
+            ul. Przemysłowa 2<br>
+            30-701 Kraków<br><br>
+
+            NIP: 679-25-51-640 <br>
+            REGON: 351610904 <br><br>
+
+            Sąd rejestrowy: Sąd Rejonowy dla Krakowa – Śródmieścia <br>
+            Wydział XI Gospodarczy Krajowego Rejestru Sądowego <br>
+            Numer w Rejestrze Przedsiębiorców KRS 0000848805 <br>
+            Numer rejestrowy BDO: 000005016 <br>
+        </p>
+    </div>
+    </div>
+</div>
+<hr>
+
+{% include "candelight_website/footer.html" %}
+{% endblock %}

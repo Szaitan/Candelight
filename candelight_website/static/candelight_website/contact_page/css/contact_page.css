@@ -32,27 +32,27 @@
     font-size: 1.1em;
 }
 
-.realisation-image {
-    max-width: 100%;
-    height: auto; /* Allow the image to resize while maintaining aspect ratio */
-    transition: transform 0.3s ease-in-out;
+.second-container {
+    background-color: #B6BBC4;
 }
 
-.realisation-image:hover {
-    transform: scale(1.05);
+.email-link{
+    text-decoration: none;
+    color: black;
 }
 
-.realisation-text {
-    text-align: justify;
+.email-link:hover {
+    color: red;
 }
 
-.objects-text {
-    margin: 10px 0px;
-    font-weight: bold;
+span {
+    margin-right: 25px;
 }
 
-.realization-type-btn {
-    margin: 5px;
+ul {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
 }
 
 @media only screen and (max-width: 768px) {

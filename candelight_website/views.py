@@ -3,6 +3,7 @@ from django.views import View
 import datetime
 from candelight_website.models import RealisationsProject, RealisationsType
 from django.http import JsonResponse
+from candelight_website.forms import ContactMeForm
 # Create your views here.
 
 
@@ -58,3 +59,10 @@ class RealisationsPageView(View):
             "year": year
         })
 
+
+class ContactPageView(View):
+        def get(self, request):
+            form = ContactMeForm()
+            return render(request, "candelight_website/contact_page.html", {
+                "form": form
+            })
