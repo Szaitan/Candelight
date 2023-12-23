@@ -4,6 +4,7 @@ import datetime
 from candelight_website.models import RealisationsProject, RealisationsType
 from django.http import JsonResponse
 from candelight_website.forms import ContactMeForm
+import os
 # Create your views here.
 
 
@@ -63,6 +64,18 @@ class RealisationsPageView(View):
 class ContactPageView(View):
         def get(self, request):
             form = ContactMeForm()
+            print(os.environ.get("TEST"))
             return render(request, "candelight_website/contact_page.html", {
                 "form": form
             })
+
+        def post(self, request):
+            form = ContactMeForm(request.POST)
+            if form.is_valid():
+                return render(request, "candelight_website/contact_page.html", {
+                    "form": form
+                })
+            else:
+                return render(request, "candelight_website/contact_page.html", {
+                    "form": form
+                })

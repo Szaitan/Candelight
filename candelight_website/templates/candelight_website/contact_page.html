@@ -17,7 +17,7 @@
 </div>
 
 <div class="container first-container">
-    <img src="{% static 'candelight_website/realisations_page/images/realisation-first-image.jpg' %}" class="first-container-img" alt="realisation-first-image">
+    <img src="{% static 'candelight_website/contact_page/images/contact-page-img.jpg' %}" class="first-container-img" alt="realisation-first-image">
     <div class="first-container-text">
         <h1 class="intro-title my-4">How can we help?</h1>
         <p class="intro-text py-5">If you are interested in our services, please contact us.</p>
@@ -55,6 +55,21 @@
     </div>
 </div>
 <hr>
+
+<div class="container">
+    <h5>Send us your message:</h5>
+    <form action="{% url 'contact_page' %}" method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+        {{ field.label_tag }}
+        <br>
+        {{ field }}
+        {{ field.errors }}
+        <br>
+        {% endfor %}
+        <button class="btn btn-outline-dark">Send</button>
+    </form>
+</div>
 
 {% include "candelight_website/footer.html" %}
 {% endblock %}
