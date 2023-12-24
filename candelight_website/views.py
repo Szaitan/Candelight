@@ -67,12 +67,15 @@ class RealisationsPageView(View):
 class ContactPageView(View):
         def get(self, request):
             form = ContactMeForm()
+            year = get_date()
             print(os.environ.get("TEST"))
             return render(request, "candelight_website/contact_page.html", {
-                "form": form
+                "form": form,
+                "tear": year
             })
 
         def post(self, request):
+            year = get_date()
             form = ContactMeForm(request.POST)
             if form.is_valid():
                 clean_data = form.cleaned_data
@@ -97,5 +100,6 @@ class ContactPageView(View):
                 return redirect(reverse("contact_page"))
             else:
                 return render(request, "candelight_website/contact_page.html", {
-                    "form": form
+                    "form": form,
+                    "year": year,
                 })
