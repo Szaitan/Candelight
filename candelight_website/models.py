@@ -23,3 +23,24 @@ class RealisationsProject(models.Model):
 
     def __str__(self):
         return f"{self.title} {self.category}"
+
+
+class ProductsInternalExternal(models.Model):
+    name = models.CharField()
+
+
+class ProductsProduct(models.Model):
+    name = models.CharField()
+    group = models.ForeignKey(ProductsInternalExternal, on_delete=models.CASCADE)
+    main_image = models.ImageField(upload_to="products_images", null=True)
+    cover = models.CharField()
+    diffuser = models.CharField()
+    power_supply = models.CharField()
+
+    def delete(self, *args, **kwargs):
+        storage, path = self.main_image.storage, self.main_image.path
+        storage.delete(path)
+        super(ProductsProduct, self).delete(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.group} {self.name}"
