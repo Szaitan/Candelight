@@ -1,8 +1,10 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}Our Products{% endblock %}
 
 {% block css_files %}
-{% endblock%}
+    <link rel="stylesheet" href="{% static 'candelight_website/products_page/css/products_page.css' %}">
+{% endblock %}
 
 {% block content %}
 <div class="navigation-bar">
@@ -12,6 +14,67 @@
         </div>
     </div>
 </div>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xl-2 col-lg-12 col-md-12">
+            <!-- Sidebar -->
+            <div class="flex-shrink-0" style="width: 180px;">
+                <a href="{% url 'products_page' %}" class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+                    <span class="fs-5 fw-semibold">Products</span>
+                </a>
+                <ul class="list-unstyled ps-0">
+                    <li class="mb-1">
+                        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false" onclick="toggleArrow(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-bar-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8m-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5"/>
+                            </svg>
+                            Internal
+                        </button>
+                        <div class="collapse" id="home-collapse" style="">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded mx-3">Overview</a></li>
+                                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded mx-3">Updates</a></li>
+                                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded mx-3">Reports</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="mb-1">
+                        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false" onclick="toggleArrow(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-bar-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8m-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5"/>
+                            </svg>
+                            External
+                        </button>
+                        <div class="collapse" id="dashboard-collapse">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded mx-3">Overview</a></li>
+                                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded mx-3">Weekly</a></li>
+                                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded mx-3">Monthly</a></li>
+                                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded mx-3">Annually</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="border-top my-3"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-xl-10 col-lg-12 col-md-12">
+            <h1>Test</h1>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function toggleArrow(button) {
+        const arrowIcon = button.querySelector('.bi');
+        arrowIcon.classList.toggle('bi-arrow-bar-right');
+        arrowIcon.classList.toggle('bi-arrow-bar-down');
+    }
+</script>
 
 {% include "candelight_website/footer.html" %}{% with year=year%}{% endwith%}
 {% endblock %}

@@ -11,7 +11,7 @@ from email.header import Header
 # Create your views here.
 
 
-def get_date():
+def get_year():
     year = datetime.date.today().year
     return year
 
@@ -32,7 +32,7 @@ def get_realizations(request, type_id):
 
 class IndexPageView(View):
     def get(self, request):
-        year = get_date()
+        year = get_year()
         return render(request, "candelight_website/main_page.html", {
             "year": year
         })
@@ -40,7 +40,7 @@ class IndexPageView(View):
 
 class AboutPageView(View):
     def get(self, request):
-        year = get_date()
+        year = get_year()
         return render(request, "candelight_website/about_page.html", {
             "year": year,
         })
@@ -48,7 +48,7 @@ class AboutPageView(View):
 
 class RealisationsPageView(View):
     def get(self, request):
-        year = get_date()
+        year = get_year()
         button_types = RealisationsType.objects.all()
         realization_data = [
             {'title': realization.title,
@@ -67,7 +67,7 @@ class RealisationsPageView(View):
 class ContactPageView(View):
         def get(self, request):
             form = ContactMeForm()
-            year = get_date()
+            year = get_year()
             print(os.environ.get("TEST"))
             return render(request, "candelight_website/contact_page.html", {
                 "form": form,
@@ -75,7 +75,7 @@ class ContactPageView(View):
             })
 
         def post(self, request):
-            year = get_date()
+            year = get_year()
             form = ContactMeForm(request.POST)
             if form.is_valid():
                 clean_data = form.cleaned_data
@@ -103,3 +103,11 @@ class ContactPageView(View):
                     "form": form,
                     "year": year,
                 })
+
+
+class ProductsPageView(View):
+    def get(self, request):
+        year = get_year()
+        return render(request, "candelight_website/products_page.html", {
+            "year": year
+        })

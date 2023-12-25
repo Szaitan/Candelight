@@ -1,0 +1,9 @@
+/* Rotate arrow down when aria-expanded is true */
+.btn[aria-expanded="true"] svg.bi-arrow-bar-down {
+    transform: rotate(90deg);
+}
+
+/* Default arrow direction */
+.btn[aria-expanded="false"] svg.bi-arrow-bar-down {
+    transform: rotate(0deg);
+}
