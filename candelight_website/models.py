@@ -26,16 +26,13 @@ class RealisationsProject(models.Model):
 
 
 class ProductsInternalExternal(models.Model):
-    name = models.CharField()
+    name = models.CharField(max_length=200)
 
 
 class ProductsProduct(models.Model):
-    name = models.CharField()
+    name = models.CharField(max_length=200)
     group = models.ForeignKey(ProductsInternalExternal, on_delete=models.CASCADE)
     main_image = models.ImageField(upload_to="products_images", null=True)
-    cover = models.CharField()
-    diffuser = models.CharField()
-    power_supply = models.CharField()
 
     def delete(self, *args, **kwargs):
         storage, path = self.main_image.storage, self.main_image.path
