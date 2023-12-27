@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load getitem %}
 {% block title %}Our Products{% endblock %}
 
 {% block css_files %}
@@ -7,6 +8,7 @@
 {% endblock %}
 
 {% block content %}
+
 <div class="navigation-bar">
     <div class="container">
         <div class="row">
@@ -14,8 +16,6 @@
         </div>
     </div>
 </div>
-
-
 
 <div class="container">
     <div class="row">
@@ -26,46 +26,23 @@
                     <h4 class="fs-5 fw-semibold mt-3 text-center">Products</h4>
                 </a>
                 <ul class="list-unstyled ps-0">
-                    <li class="mb-1">
-                        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false" onclick="toggleArrow(this)">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-bar-right" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8m-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5"/>
-                            </svg>
-                            Internal
-                        </button>
-                        <div class="collapse" id="home-collapse" style="">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-2 small">
-                                <li><button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn" data-type-id="Recessed">Recessed</button></li>
-                                <li><button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn" data-type-id="Recessed mounted profile">Recessed mounted profile</button></li>
-                                <li><button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn" data-type-id="Surface mounted and suspended: downlight, spotlight">Surface mounted and suspended: downlight, spotlight</button></li>
-                                <li><button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn" data-type-id="Surface-mounted and suspended profile">Surface-mounted and suspended profile</button></li>
-                                <li><button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn" data-type-id="Architectural">Architectural</button></li>
-                                <li><button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn" data-type-id="Track mounted spotlights">Track mounted spotlights</button></li>
-                                <li><button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn" data-type-id="Magnetic track Systems">Magnetic track Systems</button></li>
-                                <li><button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn" data-type-id="Desktop and standalone">Desktop and standalone</button></li>
-                                <li><button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn" data-type-id="Wall fixtures">Wall fixtures</button></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="mb-1">
-                        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false" onclick="toggleArrow(this)">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-bar-right" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8m-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5"/>
-                            </svg>
-                            External
-                        </button>
-                        <div class="collapse" id="dashboard-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn" data-type-id="Park pole">Park pole</button></li>
-                                <li><button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn" data-type-id="Park Bollard">Park Bollard</button></li>
-                                <li><button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn" data-type-id="Wall and ceiling fixtures">Wall and ceiling fixtures</button></li>
-                                <li><button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn" data-type-id="Illumination fixtures">Illumination fixtures</button></li>
-                                <li><button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn" data-type-id="In-Ground fixtures">In-Ground fixtures</button></li>
-                                <li><button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn" data-type-id="Street luminaries and floodlights">Street luminaries and floodlights</button></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="border-top my-3"></li>
+                    {% for main_group in main_group_list %}
+                        <li class="mb-1">
+                            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse-{{ forloop.counter }}" aria-expanded="false" onclick="toggleArrow(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-bar-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8m-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5"/>
+                                </svg>
+                                {{ main_group }}
+                            </button>
+                            <div class="collapse" id="home-collapse-{{ forloop.counter }}" style="">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-2 small">
+                                    {% for group in sub_group_dic|get_item:main_group %}
+                                        <li><button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn" data-type-id="{{ group }}">{{ group }}</button></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>

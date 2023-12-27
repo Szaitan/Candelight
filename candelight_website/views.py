@@ -1,7 +1,7 @@
 from django.shortcuts import render, reverse, redirect
 from django.views import View
 import datetime
-from candelight_website.models import RealisationsProject, RealisationsType, ProductsProduct
+from candelight_website.models import RealisationsProject, RealisationsType, ProductsProduct, ProductsInternalExternal
 from django.http import JsonResponse
 from candelight_website.forms import ContactMeForm
 import os
@@ -117,9 +117,37 @@ class ContactPageView(View):
 
 class ProductsPageView(View):
     def get(self, request):
+        main_group_list = []
+        sub_group_list = []
+        sub_group_dic = {}
+
+        main_group_data = ProductsInternalExternal.objects.all()
+        for group in main_group_data:
+            # Names of main group
+            main_group_list.append(group.name)
+
+            # Names of the subgroup for each main group
+            sub_group = group.productsproduct_set.all()
+
+            sub_group_to_add = []
+            for sub_product in sub_group:
+                x = sub_product.sub_group.name
+                sub_group_to_add.append(x)
+            sub_group_list.append(sub_group_to_add)
+
+        print(main_group_list)
+        print(sub_group_list)
+
+        for n in range(len(main_group_list)):
+            sub_group_dic[main_group_list[n]] = sub_group_list[n]
+
+        print(sub_group_dic['Internal'])
+
         year = get_year()
         all_products = ProductsProduct.objects.all()
         return render(request, "candelight_website/products_page.html", {
             "year": year,
-            "all_products": all_products
+            "all_products": all_products,
+            "main_group_list": main_group_list,
+            "sub_group_dic": sub_group_dic,
         })
