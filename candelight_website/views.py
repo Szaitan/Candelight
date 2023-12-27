@@ -1,13 +1,15 @@
 from django.shortcuts import render, reverse, redirect
 from django.views import View
 import datetime
-from candelight_website.models import RealisationsProject, RealisationsType
+from candelight_website.models import RealisationsProject, RealisationsType, ProductsProduct
 from django.http import JsonResponse
 from candelight_website.forms import ContactMeForm
 import os
 import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
+
+
 # Create your views here.
 
 
@@ -17,7 +19,6 @@ def get_year():
 
 
 def get_realizations(request, type_id):
-
     if type_id is not None and type_id != 0:
         realizations = RealisationsProject.objects.filter(category_id=type_id)
     else:
@@ -28,6 +29,15 @@ def get_realizations(request, type_id):
                          'description': realization.description,
                          'image_url': realization.image.url} for realization in realizations]
     return JsonResponse(realization_data, safe=False)
+
+
+def get_products(request, type_id):
+    print(type_id)
+    products = ProductsProduct.objects.filter(sub_group__name=type_id)
+    print(products)
+    products_data = [{'name': product.name,
+                      'main_image': product.main_image.url} for product in products]
+    return JsonResponse(products_data, safe=False)
 
 
 class IndexPageView(View):
@@ -65,49 +75,51 @@ class RealisationsPageView(View):
 
 
 class ContactPageView(View):
-        def get(self, request):
-            form = ContactMeForm()
-            year = get_year()
-            print(os.environ.get("TEST"))
+    def get(self, request):
+        form = ContactMeForm()
+        year = get_year()
+        print(os.environ.get("TEST"))
+        return render(request, "candelight_website/contact_page.html", {
+            "form": form,
+            "tear": year
+        })
+
+    def post(self, request):
+        year = get_year()
+        form = ContactMeForm(request.POST)
+        if form.is_valid():
+            clean_data = form.cleaned_data
+            with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
+                connection.starttls()
+                connection.login(user=os.environ.get("michal_mail"),
+                                 password=os.environ.get("google_app_access_password"))
+
+                name = clean_data["name"]
+                last_name = clean_data["last_name"]
+                phone_number = clean_data["phone_number"]
+                email = clean_data["email"]
+                message = clean_data["message"]
+
+                msg = MIMEText(
+                    f"Name: {name}\nLast Name: {last_name}\nPhone Number: {phone_number}\nEmail: {email}\n\n{message}",
+                    'plain', 'utf-8')
+                msg['Subject'] = Header(name, 'utf-8').encode()
+                connection.sendmail(from_addr=os.environ.get("michal_mail"), to_addrs=os.environ.get("michal_mail"),
+                                    msg=msg.as_string())
+
+            return redirect(reverse("contact_page"))
+        else:
             return render(request, "candelight_website/contact_page.html", {
                 "form": form,
-                "tear": year
+                "year": year,
             })
-
-        def post(self, request):
-            year = get_year()
-            form = ContactMeForm(request.POST)
-            if form.is_valid():
-                clean_data = form.cleaned_data
-                with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
-                    connection.starttls()
-                    connection.login(user=os.environ.get("michal_mail"),
-                                     password=os.environ.get("google_app_access_password"))
-
-                    name = clean_data["name"]
-                    last_name = clean_data["last_name"]
-                    phone_number = clean_data["phone_number"]
-                    email = clean_data["email"]
-                    message = clean_data["message"]
-
-                    msg = MIMEText(
-                        f"Name: {name}\nLast Name: {last_name}\nPhone Number: {phone_number}\nEmail: {email}\n\n{message}",
-                        'plain', 'utf-8')
-                    msg['Subject'] = Header(name, 'utf-8').encode()
-                    connection.sendmail(from_addr=os.environ.get("michal_mail"), to_addrs=os.environ.get("michal_mail"),
-                                        msg=msg.as_string())
-
-                return redirect(reverse("contact_page"))
-            else:
-                return render(request, "candelight_website/contact_page.html", {
-                    "form": form,
-                    "year": year,
-                })
 
 
 class ProductsPageView(View):
     def get(self, request):
         year = get_year()
+        all_products = ProductsProduct.objects.all()
         return render(request, "candelight_website/products_page.html", {
-            "year": year
+            "year": year,
+            "all_products": all_products
         })

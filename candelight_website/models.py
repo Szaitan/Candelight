@@ -28,10 +28,21 @@ class RealisationsProject(models.Model):
 class ProductsInternalExternal(models.Model):
     name = models.CharField(max_length=200)
 
+    def __str__(self):
+        return f"{self.name}"
+
+
+class ProductsSubgroup(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.name}"
+
 
 class ProductsProduct(models.Model):
     name = models.CharField(max_length=200)
-    group = models.ForeignKey(ProductsInternalExternal, on_delete=models.CASCADE)
+    main_group = models.ForeignKey(ProductsInternalExternal, on_delete=models.CASCADE)
+    sub_group = models.ForeignKey(ProductsSubgroup, on_delete=models.CASCADE, null=True)
     main_image = models.ImageField(upload_to="products_images", null=True)
 
     def delete(self, *args, **kwargs):
@@ -40,4 +51,4 @@ class ProductsProduct(models.Model):
         super(ProductsProduct, self).delete(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.group} {self.name}"
+        return f"{self.name} {self.main_group} {self.sub_group}"
