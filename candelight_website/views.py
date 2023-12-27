@@ -33,8 +33,12 @@ def get_realizations(request, type_id):
 
 def get_products(request, type_id):
     print(type_id)
-    products = ProductsProduct.objects.filter(sub_group__name=type_id)
-    print(products)
+    if type_id == "Internal" or type_id == "External":
+        products = ProductsProduct.objects.filter(main_group__name=type_id)
+        print(products)
+    else:
+        products = ProductsProduct.objects.filter(sub_group__name=type_id)
+
     products_data = [{'name': product.name,
                       'main_image': product.main_image.url} for product in products]
     return JsonResponse(products_data, safe=False)
@@ -132,16 +136,12 @@ class ProductsPageView(View):
             sub_group_to_add = []
             for sub_product in sub_group:
                 x = sub_product.sub_group.name
-                sub_group_to_add.append(x)
+                if x not in sub_group_to_add:
+                    sub_group_to_add.append(x)
             sub_group_list.append(sub_group_to_add)
-
-        print(main_group_list)
-        print(sub_group_list)
 
         for n in range(len(main_group_list)):
             sub_group_dic[main_group_list[n]] = sub_group_list[n]
-
-        print(sub_group_dic['Internal'])
 
         year = get_year()
         all_products = ProductsProduct.objects.all()

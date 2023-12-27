@@ -36,6 +36,9 @@
                             </button>
                             <div class="collapse" id="home-collapse-{{ forloop.counter }}" style="">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-2 small">
+                                    <li>
+                                        <button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn" data-type-id="{{ main_group }}">All</button>
+                                    </li>
                                     {% for group in sub_group_dic|get_item:main_group %}
                                         <li><button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn" data-type-id="{{ group }}">{{ group }}</button></li>
                                     {% endfor %}
