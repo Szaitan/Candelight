@@ -35,7 +35,8 @@ def get_products(request, type_id):
     print(type_id)
     if type_id == "Internal" or type_id == "External":
         products = ProductsProduct.objects.filter(main_group__name=type_id)
-        print(products)
+    elif type_id == "All":
+        products = ProductsProduct.objects.all()
     else:
         products = ProductsProduct.objects.filter(sub_group__name=type_id)
 
