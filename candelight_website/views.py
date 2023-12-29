@@ -12,7 +12,6 @@ from email.header import Header
 
 # Create your views here.
 
-
 def get_year():
     year = datetime.date.today().year
     return year
