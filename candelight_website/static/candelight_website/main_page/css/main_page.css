@@ -10,14 +10,14 @@
 
 .carousel-caption {
     position: absolute;
-    top: 20%;
-    left: 50%;
+    top: 15%;
+    left: 60%;
     transform: translate(2%, 2%);
     color: #fff; /* Set the color of the text */
     text-align: left; /* Center the text */
     max-width: 400px;
     height: 12vh;
-    font-size: 14px;
+    font-size: 0.8em;
     font-weight: bold;
     text-align: justify;
 }
@@ -40,7 +40,7 @@
     top: 30%;
     left: 15%;
     color: white;
-    font-size: 14px;
+    font-size: 0.8em;
     font-weight: bold;
     text-align: justify;
 }
@@ -52,11 +52,11 @@
 }
 
 .row {
-margin: 0px;
+    margin: 0px;
 }
 
 .left-side-split {
-padding: 0px;
+    padding: 0px;
 }
 
 .split-first-text-div {
@@ -72,13 +72,13 @@ padding: 0px;
     top: 33%;
     left: 14%;
     color: black;
-    font-size: 14px;
+    font-size: 0.8em;
     font-weight: bold;
     text-align: justify;
 }
 
 .right-side-split {
-padding: 0px;
+    padding: 0px;
 }
 
 .split-second-text-div {
@@ -94,7 +94,7 @@ padding: 0px;
     top: 33%;
     left: 25%;
     color: black;
-    font-size: 14px;
+    font-size: 0.8em;
     font-weight: bold;
     margin: 8px;
     text-align: justify;
