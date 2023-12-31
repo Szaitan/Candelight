@@ -10,7 +10,7 @@
 
 .carousel-caption {
     position: absolute;
-    top: 15%;
+    top: 20%;
     left: 60%;
     transform: translate(2%, 2%);
     color: #fff; /* Set the color of the text */
