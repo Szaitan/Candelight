@@ -18,7 +18,7 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-xl-2 col-lg-12 col-md-12">
+        <div class="col-xl-2 col-lg-12 col-md-6 col-sl-12">
             <!-- Sidebar -->
             <div class="flex-shrink-0" style="width: 180px;">
                 <a href="{% url 'products_page' %}" class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
@@ -55,7 +55,7 @@
             </div>
             <div class="row products-row">
                 {% for product in all_products %}
-                <div class="cox-xl-3 col-lg-3 col-md-6">
+                <div class="cox-xl-3 col-lg-3 col-md-6 col-sm-6">
                     <div class="product-div">
                         <img src="{{ product.main_image.url }}" class="product-img" alt="test-img">
                         <h5 class="product-text">{{ product.name }}</h5>
