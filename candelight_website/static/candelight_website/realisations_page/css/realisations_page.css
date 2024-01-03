@@ -32,10 +32,15 @@
     font-size: 1.1em;
 }
 
+.realisation-div {
+    height: 25vh;
+    width: 25vh;
+}
+
 .realisation-image {
     max-width: 100%;
-    height: auto; /* Allow the image to resize while maintaining aspect ratio */
-    transition: transform 0.3s ease-in-out;
+    height: 25vh; /* Set a fixed height */
+    object-fit: cover; /* Scale the image to cover the container, preserving aspect ratio */
 }
 
 .realisation-image:hover {
@@ -66,5 +71,9 @@
 
     .intro-text {
         font-size: 0.7em; /* Adjust font size for smaller screens */
+    }
+
+    .realisation-image {
+        height: auto;
     }
 }

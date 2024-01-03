@@ -32,7 +32,7 @@
 <hr>
 
 <div class="container">
-    <button class="btn btn-outline-dark realization-type-btn" data-type-id="all">All</button>
+    <button class="btn btn-outline-dark realization-type-btn active" data-type-id="all">All</button>
     {% for type in button_types %}
         <button class="btn btn-outline-dark realization-type-btn" data-type-id="{{ type.id }}">{{ type.type }}</button>
     {% endfor %}
