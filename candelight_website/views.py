@@ -82,7 +82,6 @@ class ContactPageView(View):
     def get(self, request):
         form = ContactMeForm()
         year = get_year()
-        print(os.environ.get("TEST"))
         return render(request, "candelight_website/contact_page.html", {
             "form": form,
             "tear": year
