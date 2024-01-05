@@ -105,8 +105,8 @@
         text-align: justify;
     }
 
-    .carousel-caption {
+    .carousel-caption, .empty-room-text, .split-first-text, .split-second-text {
         top: 10%;
-        left: 15%;
+        left: 10%;
     }
 }

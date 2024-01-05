@@ -84,31 +84,17 @@ padding: 0px;
 }
 
 @media only screen and (max-width: 768px) {
-    .split-first-text,  {
+    .split-first-text, .split-second-text  {
         text-align: justify;
+        right: 15%;
     }
 
-    .split-first-text h5 {
+    .split-first-text h5, .split-second-text h5 {
         margin-top: 10px;
         font-size: 0.8em; /* Adjust font size for smaller screens */
     }
 
-    .split-first-text p {
-        font-size: 0.8em; /* Adjust font size for smaller screens */
-    }
-}
-
-@media only screen and (max-width: 768px) {
-    .split-second-text {
-        text-align: justify;
-    }
-
-    .split-second-text h5 {
-        margin-top: 10px;
-        font-size: 0.8em; /* Adjust font size for smaller screens */
-    }
-
-    .split-second-text p {
+    .split-first-text p, .split-second-text p {
         font-size: 0.8em; /* Adjust font size for smaller screens */
     }
 }
