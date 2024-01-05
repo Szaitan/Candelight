@@ -25,6 +25,7 @@
 .product-text {
     padding-left: 5px;
     font-weight: bold;
+    font-size: 1em;
 }
 
 /* Rotate arrow down when aria-expanded is true */
@@ -36,3 +37,8 @@
 .btn[aria-expanded="false"] svg.bi-arrow-bar-down {
     transform: rotate(0deg);
 }
+
+@media only screen and (max-width: 768px) {
+    .product-text {
+        font-size: 0.9em;}
+    }
