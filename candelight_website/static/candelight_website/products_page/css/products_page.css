@@ -4,7 +4,7 @@
 
 .product-div {
     width: 24vh;
-    height: 24vh;
+    height: 25vh;
     margin-bottom: 10px;
     background-color: #e6e6e6;
 }
@@ -18,8 +18,8 @@
 }
 
 .product-img {
-    width: 100%;
-    height: 90%;
+    width: 24vh;
+    height: 22vh;
     object-fit: fit;
 }
 .product-text {
@@ -40,5 +40,5 @@
 
 @media only screen and (max-width: 768px) {
     .product-text {
-        font-size: 0.9em;}
+        font-size: 0.75em;}
     }
