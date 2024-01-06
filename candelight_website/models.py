@@ -34,6 +34,8 @@ class ProductsInternalExternal(models.Model):
 
 class ProductsSubgroup(models.Model):
     name = models.CharField(max_length=100)
+    main_group = models.ForeignKey(ProductsInternalExternal, on_delete=models.CASCADE, null=True)
+    number = models.IntegerField()
 
     def __str__(self):
         return f"{self.name}"
@@ -41,6 +43,7 @@ class ProductsSubgroup(models.Model):
 
 class ProductsProduct(models.Model):
     name = models.CharField(max_length=200)
+    number = models.IntegerField()
     main_group = models.ForeignKey(ProductsInternalExternal, on_delete=models.CASCADE)
     sub_group = models.ForeignKey(ProductsSubgroup, on_delete=models.CASCADE, null=True)
     main_image = models.ImageField(upload_to="products_images", null=True)

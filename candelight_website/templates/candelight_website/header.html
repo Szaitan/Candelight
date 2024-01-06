@@ -1,22 +1,22 @@
 <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'main_page' %}">Candelight</a>
+        <a class="navbar-brand logotype" href="{% url 'main_page' %}">Candelight</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link navigation-bar-buttons {% if request.path == '/about-us' %}nav-picked-button{% endif %}" aria-current="page" href="{% url 'about_page'%}">About</a>
+                    <a class="nav-link navigation-bar-buttons {% if request.path == '/about-us' %}nav-picked-button{% endif %}" aria-current="page" href="{% url 'about_page'%}">O Nas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link navigation-bar-buttons {% if request.path == '/products' %}nav-picked-button{% endif %}" href="{% url 'products_page' %}">Products</a>
+                    <a class="nav-link navigation-bar-buttons {% if request.path == '/products' %}nav-picked-button{% endif %}" href="{% url 'products_page' %}">Produkty</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link navigation-bar-buttons {% if request.path == '/realisations' %}nav-picked-button{% endif %}" href="{% url 'realisations_page' %}">Realisations</a>
+                    <a class="nav-link navigation-bar-buttons {% if request.path == '/realisations' %}nav-picked-button{% endif %}" href="{% url 'realisations_page' %}">Realizacje</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link navigation-bar-buttons {% if request.path == '/contact' %}nav-picked-button{% endif %}" href="{% url 'contact_page' %}">Contact</a>
+                    <a class="nav-link navigation-bar-buttons {% if request.path == '/contact' %}nav-picked-button{% endif %}" href="{% url 'contact_page' %}">Kontakt</a>
                 </li>
             </ul>
         </div>

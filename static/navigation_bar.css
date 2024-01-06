@@ -6,6 +6,12 @@
     color: black;
 }
 
+.logotype {
+    font-family: 'Sawarabi Gothic', sans-serif;
+    font-size: 1.2em;
+    color: black;
+}
+
 .navigation-bar-buttons {
     color: black;
     width: 9vw;

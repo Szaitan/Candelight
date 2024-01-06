@@ -22,10 +22,10 @@
             <!-- Sidebar -->
             <div class="flex-shrink-0" style="width: 180px;">
                 <a href="{% url 'products_page' %}" class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
-                    <h4 class="fs-5 fw-semibold mt-3 text-center">Products</h4>
+                    <h4 class="fs-5 fw-semibold mt-3 text-center">Produkty</h4>
                 </a>
                 <ul class="list-unstyled ps-0">
-                    <li><button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn active" data-type-id="All">All</button></li>
+                    <li><button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn active" data-type-id="All">Wszystko</button></li>
                     {% for main_group in main_group_list %}
                         <li class="mb-1">
                             <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse-{{ forloop.counter }}" aria-expanded="false" onclick="toggleArrow(this)">
@@ -37,7 +37,7 @@
                             <div class="collapse" id="home-collapse-{{ forloop.counter }}" style="">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-2 small">
                                     <li>
-                                        <button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn" data-type-id="{{ main_group }}">All</button>
+                                        <button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn" data-type-id="{{ main_group }}">Wszystko</button>
                                     </li>
                                     {% for group in sub_group_dic|get_item:main_group %}
                                         <li><button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn" data-type-id="{{ group }}">{{ group }}</button></li>
@@ -51,7 +51,7 @@
         </div>
         <div class="col-xl-10 col-lg-12 col-md-12">
             <div class="row">
-                <h1>All Products</h1>
+                <h1>Produkty</h1>
             </div>
             <div class="row products-row">
                 {% for product in all_products %}

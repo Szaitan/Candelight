@@ -16,23 +16,19 @@
     </div>
 </div>
 
+<div class="container">
+    <div class="row">
+        <h1 class="intro-title">Realizacje</h1>
+    </div>
+</div>
 
 <div class="container first-container">
     <img src="{% static 'candelight_website/realisations_page/images/realisation-first-image.jpg' %}" class="first-container-img" alt="realisation-first-image">
-    <div class="first-container-text">
-        <h1 class="intro-title my-4">Realisations</h1>
-        <p class="intro-text py-5">From conceptualization to illumination, each project represents a harmonious blend of creativity, innovation, and
-        technical expertise. Immerse yourself in the artistry of light as we unveil the real-world impact of our bespoke
-        lighting solutions. Explore how our team transforms visions into captivating and functional environments.
-        Join us on a journey through our realized projects, where every flicker tells a story of ingenuity
-        and brilliance.</p>
-    </div>
-
 </div>
 <hr>
 
 <div class="container">
-    <button class="btn btn-outline-dark realization-type-btn active" data-type-id="all">All</button>
+    <button class="btn btn-outline-dark realization-type-btn active" data-type-id="all">Wszystko</button>
     {% for type in button_types %}
         <button class="btn btn-outline-dark realization-type-btn" data-type-id="{{ type.id }}">{{ type.type }}</button>
     {% endfor %}
@@ -45,7 +41,6 @@
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
             <img src="{{data.image_url}}" class="realisation-image mx-auto d-flex" alt="Realization-Image">
             <h5 class="objects-text">{{ data.title }}</h5>
-            <p class="realisation-text">{{ data.description }}</p>
         </div>
         {% endfor %}
     </div>
@@ -83,7 +78,6 @@
                             <div class="col-lg-3">
                                 <img src="${data[i].image_url}" class="realisation-image mx-auto d-flex" alt="Realization Image">
                                 <h5 class="objects-text">${data[i].title}</h5>
-                                <p class="realisation-text">${data[i].description}</p>
                             </div>
                         `);
                     }

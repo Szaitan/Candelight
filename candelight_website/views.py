@@ -31,11 +31,10 @@ def get_realizations(request, type_id):
 
 
 def get_products(request, type_id):
-    print(type_id)
-    if type_id == "Internal" or type_id == "External":
-        products = ProductsProduct.objects.filter(main_group__name=type_id)
+    if type_id == "Wewnętrzne" or type_id == "Zewnętrzne":
+        products = ProductsProduct.objects.filter(main_group__name=type_id).order_by("number")
     elif type_id == "All":
-        products = ProductsProduct.objects.all()
+        products = ProductsProduct.objects.all().order_by("number")
     else:
         products = ProductsProduct.objects.filter(sub_group__name=type_id)
 
@@ -124,26 +123,30 @@ class ProductsPageView(View):
         sub_group_list = []
         sub_group_dic = {}
 
-        main_group_data = ProductsInternalExternal.objects.all()
+        main_group_data = ProductsInternalExternal.objects.all().order_by("name")
+
         for group in main_group_data:
-            # Names of main group
             main_group_list.append(group.name)
 
-            # Names of the subgroup for each main group
-            sub_group = group.productsproduct_set.all()
-
+            order_group = group.productssubgroup_set.all().order_by("number")
             sub_group_to_add = []
-            for sub_product in sub_group:
-                x = sub_product.sub_group.name
+
+            for sub_object in order_group:
+                x = sub_object.name
                 if x not in sub_group_to_add:
                     sub_group_to_add.append(x)
+
             sub_group_list.append(sub_group_to_add)
 
         for n in range(len(main_group_list)):
             sub_group_dic[main_group_list[n]] = sub_group_list[n]
 
+        # Year for footer
         year = get_year()
-        all_products = ProductsProduct.objects.all()
+
+        # All luminaries to display
+        all_products = ProductsProduct.objects.all().order_by('number')
+
         return render(request, "candelight_website/products_page.html", {
             "year": year,
             "all_products": all_products,
