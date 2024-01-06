@@ -25,7 +25,7 @@
                     <h4 class="fs-5 fw-semibold mt-3 text-center">Produkty</h4>
                 </a>
                 <ul class="list-unstyled ps-0">
-                    <li><button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn active" data-type-id="All">Wszystko</button></li>
+                    <li><button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn active" data-type-id="All">Produkty</button></li>
                     {% for main_group in main_group_list %}
                         <li class="mb-1">
                             <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse-{{ forloop.counter }}" aria-expanded="false" onclick="toggleArrow(this)">
@@ -37,7 +37,7 @@
                             <div class="collapse" id="home-collapse-{{ forloop.counter }}" style="">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-2 small">
                                     <li>
-                                        <button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn" data-type-id="{{ main_group }}">Wszystko</button>
+                                        <button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn" data-type-id="{{ main_group }}">{{main_group}}</button>
                                     </li>
                                     {% for group in sub_group_dic|get_item:main_group %}
                                         <li><button class="btn btn-outline-dark product-type-btn mx-3 my-1 product-btn" data-type-id="{{ group }}">{{ group }}</button></li>
@@ -50,8 +50,8 @@
             </div>
         </div>
         <div class="col-xl-10 col-lg-12 col-md-12">
-            <div class="row">
-                <h1>Produkty</h1>
+            <div class="row to-change">
+                <h1 id="products-header">Produkty</h1>
             </div>
             <div class="row products-row">
                 {% for product in all_products %}
@@ -88,6 +88,9 @@
 
             var typeId = $(this).data('type-id');
             console.log('Type ID:', typeId);
+
+            // Update the header text with the clicked button's text
+            $('#products-header').text($(this).text());
 
             $.ajax({
                 url: `/get_products/${typeId}/`,  // Adjust the endpoint for products
