@@ -40,7 +40,6 @@ def get_products(request, type_id):
 
     products_data = [{'name': product.name,
                       'main_image': product.main_image.url} for product in products]
-    print(type_id)
     return JsonResponse(products_data, safe=False)
 
 

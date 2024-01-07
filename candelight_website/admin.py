@@ -5,13 +5,25 @@ from candelight_website.models import RealisationsType, RealisationsProject, Pro
 
 # Register your models here.
 class RealisationsProjectAdmin(admin.ModelAdmin):
-    list_filter = ("title", "category")
-    list_display = ("title", "category")
+    list_filter = ("arrangement", "object", "category")
+    list_display = ("arrangement", "object", "category")
+
+    def delete_queryset(self, request, queryset):
+        for obj in queryset:
+            storage, path = obj.image.storage, obj.image.path
+            storage.delete(path)
+            obj.delete()
 
 
 class ProductsProductsAdmin(admin.ModelAdmin):
     list_filter = ("name", "number", "main_group", "sub_group")
     list_display = ("name", "number", "main_group", "sub_group")
+
+    def delete_queryset(self, request, queryset):
+        for obj in queryset:
+            storage, path = obj.main_image.storage, obj.main_image.path
+            storage.delete(path)
+            obj.delete()
 
 
 admin.site.register(RealisationsProject, RealisationsProjectAdmin)
