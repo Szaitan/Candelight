@@ -23,10 +23,11 @@ def get_realizations(request, type_id):
     else:
         realizations = RealisationsProject.objects.all()
 
-    realization_data = [{'title': realization.title,
+    realization_data = [{'slug': realization.slug,
+                         'object': realization.object,
                          'category': str(realization.category),
-                         'description': realization.description,
                          'image_url': realization.image.url} for realization in realizations]
+
     return JsonResponse(realization_data, safe=False)
 
 
@@ -64,9 +65,9 @@ class RealisationsPageView(View):
         year = get_year()
         button_types = RealisationsType.objects.all()
         realization_data = [
-            {'title': realization.title,
+            {'slug': realization.slug,
+             'object': realization.object,
              'category': realization.category,
-             'description': realization.description,
              'image_url': realization.image.url} for
             realization in RealisationsProject.objects.all()]
 
@@ -75,6 +76,12 @@ class RealisationsPageView(View):
             "realization_data": realization_data,
             "year": year
         })
+
+
+class RealisationPageView(View):
+    def get(self, request, slug):
+        print(slug)
+        return render(request, "candelight_website/realisation_page.html")
 
 
 class ContactPageView(View):

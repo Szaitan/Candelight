@@ -18,10 +18,11 @@ class RealisationsType(models.Model):
 
 
 class RealisationsProject(models.Model):
-    arrangement = models.CharField(max_length=75)
     object = models.CharField(max_length=75)
-    design_office = models.CharField(max_length=75)
-    photo = models.CharField(max_length=120)
+    arrangement = models.CharField(max_length=75)
+    slug = models.SlugField(max_length=75, unique=True)
+    design_office = models.CharField(max_length=75, blank=True)
+    photo = models.CharField(max_length=120, blank=True)
     category = models.ForeignKey(RealisationsType, on_delete=models.CASCADE)
     image = models.ImageField(upload_to="realisations_images", null=True)
 

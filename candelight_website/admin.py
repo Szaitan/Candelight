@@ -12,6 +12,7 @@ class RealisationsTypeAdmin(admin.ModelAdmin):
 
 
 class RealisationsProjectAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("object",)}
     list_filter = ("arrangement", "object", "category")
     list_display = ("arrangement", "object", "category")
 

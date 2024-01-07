@@ -38,10 +38,12 @@
 <div class="container realizations-container">
     <div class="row this-row">
         {% for data in realization_data %}
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-            <img src="{{data.image_url}}" class="realisation-image mx-auto d-flex" alt="Realization-Image">
-            <h5 class="objects-text">{{ data.title }}</h5>
-        </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                <a href="{% url 'realisation_page' slug=data.slug %}">
+                    <img src="{{data.image_url}}" class="realisation-image mx-auto d-flex" alt="Realization-Image">
+                    <h5 class="objects-text">{{ data.object }}</h5>
+                </a>
+            </div>
         {% endfor %}
     </div>
 </div>
@@ -73,15 +75,19 @@
                     $('.this-row').empty();
 
                     // Iterate through the fetched data and append it to the container
-                    for (var i = 0; i < data.length; i++) {
-                        $('.this-row').append(`
-                            <div class="col-lg-3">
-                                <img src="${data[i].image_url}" class="realisation-image mx-auto d-flex" alt="Realization Image">
-                                <h5 class="objects-text">${data[i].title}</h5>
+                        for (var i = 0; i < data.length; i++) {
+                            // Use the correct URL without Django template tags
+                            var url = `/realisations/${data[i].slug}`;
+                            $('.this-row').append(`
+                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                                <a href="${url}">
+                                    <img src="${data[i].image_url}" class="realisation-image mx-auto d-flex" alt="Realization Image">
+                                    <h5 class="objects-text">${data[i].object}</h5>
+                                </a>
                             </div>
-                        `);
-                    }
-                },
+                            `);
+                        }
+                    },
                 error: function(error) {
                     console.log(error);
                 }
