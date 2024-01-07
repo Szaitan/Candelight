@@ -9,6 +9,13 @@ class RealisationsType(models.Model):
     def __str__(self):
         return f"{self.type}"
 
+    def delete(self, *args, **kwargs):
+        products_products = RealisationsProject.objects.filter(category=self)
+        for product in products_products:
+            product.delete()
+
+        super(RealisationsType, self).delete(*args, **kwargs)
+
 
 class RealisationsProject(models.Model):
     arrangement = models.CharField(max_length=75)
@@ -19,12 +26,19 @@ class RealisationsProject(models.Model):
     image = models.ImageField(upload_to="realisations_images", null=True)
 
     def delete(self, *args, **kwargs):
+        # Main image from RealisationProject
         storage, path = self.image.storage, self.image.path
         storage.delete(path)
+
+        # Additional images for Realisation Project
+        additional_images = RealisationsPhotos.objects.filter(main_object=self)
+        for additional_image in additional_images:
+            additional_image.delete()
+
         super(RealisationsProject, self).delete(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.title} {self.category}"
+        return f"{self.object} {self.category}"
 
 
 class RealisationsPhotos(models.Model):
@@ -37,7 +51,7 @@ class RealisationsPhotos(models.Model):
         super(RealisationsPhotos, self).delete(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.title} {self.category}"
+        return f"{self.main_object}"
 
 
 class ProductsInternalExternal(models.Model):
@@ -48,8 +62,8 @@ class ProductsInternalExternal(models.Model):
 
     def delete(self, *args, **kwargs):
         # Delete related ProductsProduct images
-        products_products = ProductsProduct.objects.filter(sub_group=self)
-        for product in products_products:
+        products_subgroup = ProductsSubgroup.objects.filter(main_group=self)
+        for product in products_subgroup:
             product.delete()
 
         super(ProductsInternalExternal, self).delete(*args, **kwargs)
