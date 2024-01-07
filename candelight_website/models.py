@@ -38,6 +38,14 @@ class ProductsInternalExternal(models.Model):
     def __str__(self):
         return f"{self.name}"
 
+    def delete(self, *args, **kwargs):
+        # Delete related ProductsProduct images
+        products_products = ProductsProduct.objects.filter(sub_group=self)
+        for product in products_products:
+            product.delete()
+
+        super(ProductsInternalExternal, self).delete(*args, **kwargs)
+
 
 class ProductsSubgroup(models.Model):
     name = models.CharField(max_length=100)
