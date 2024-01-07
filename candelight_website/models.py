@@ -31,6 +31,14 @@ class RealisationsPhotos(models.Model):
     main_object = models.ForeignKey(RealisationsProject, on_delete=models.CASCADE)
     photo = models.ImageField(upload_to="realisations_additional_images")
 
+    def delete(self, *args, **kwargs):
+        storage, path = self.photo.storage, self.photo.path
+        storage.delete(path)
+        super(RealisationsPhotos, self).delete(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.title} {self.category}"
+
 
 class ProductsInternalExternal(models.Model):
     name = models.CharField(max_length=200)
