@@ -58,7 +58,7 @@
 <div class="container">
     <div class="row">
         {% for photo in realisation_photos %}
-            <div class="col-lg-2 small-photos-div">
+            <div class="col-lg-2 col-md-2 small-photos-div">
                 <img src="{{ photo.photo.url }}" class="clickable-image small-photos" alt="{{realisation_object.object }}-image" data-image-src="{{ photo.photo.url }}">
             </div>
         {% endfor %}
