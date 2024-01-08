@@ -4,8 +4,102 @@
 {% block title %}Realisation{% endblock %}
 
 {% block css_files %}
-<link rel="stylesheet" href="{% static 'candelight_website/realisations_page/css/realisations_page.css' %}">
+<link rel="stylesheet" href="{% static 'candelight_website/realisation_page/css/realisation_page.css' %}">
 {% endblock %}
 
 {% block content %}
+<div class="navigation-bar">
+    <div class="container">
+        <div class="row">
+            {% include "candelight_website/header.html" %}
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <h5>{{realisation_object.object}}</h5>
+        <ul>
+            <li>
+                <span>Aranżacja: {{realisation_object.arrangement}}</span>
+            </li>
+            {% if realisation_object.design_office == "" %}
+            <li>
+                <span>design_office: N/D</span>
+            </li>
+            {% else %}
+            <li>
+                <span>design_office: {{realisation_object.design_office}}</span>
+            </li>
+            {% endif %}
+            {% if realisation_object.photo == "" %}
+            <li>
+                <span>photo: N/D</span>
+            </li>
+            {% else %}
+            <li>
+                <span>photo: {{realisation_object.arrangement}}</span>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+
+<hr>
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <img src="{{ realisation_object.image.url }}" class="first-container-img" alt="realisation-first-image">
+    </div>
+</div>
+
+<hr>
+
+<div class="container">
+    <div class="row">
+        {% for photo in realisation_photos %}
+            <div class="col-lg-2 small-photos-div">
+                <img src="{{ photo.photo.url }}" class="clickable-image small-photos" alt="{{realisation_object.object }}-image" data-image-src="{{ photo.photo.url }}">
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% include "candelight_website/footer.html" %}{% with year=year%}{% endwith%}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var clickableImages = document.querySelectorAll('.clickable-image');
+
+        clickableImages.forEach(function (image) {
+            image.addEventListener('click', function () {
+                // Get the source of the clicked image
+                var imageUrl = image.getAttribute('data-image-src');
+                console.log('Clicked image URL:', imageUrl);
+
+                // Show the modal
+                showImageModal(imageUrl);
+            });
+        });
+
+        function showImageModal(imageUrl) {
+            console.log('Showing modal for image URL:', imageUrl);
+
+            // Create the modal container
+            var modal = document.createElement('div');
+            modal.className = 'modal';
+
+            var modalImage = document.createElement('img');
+            modalImage.src = imageUrl;
+            modal.appendChild(modalImage);
+
+            document.body.appendChild(modal);
+
+            modal.addEventListener('click', function () {
+                console.log('Closing modal');
+                document.body.removeChild(modal);
+            });
+        }
+    });
+</script>
 {% endblock %}

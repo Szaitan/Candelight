@@ -39,7 +39,7 @@
     <div class="row this-row">
         {% for data in realization_data %}
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-                <a href="{% url 'realisation_page' slug=data.slug %}">
+                <a href="{% url 'realisation_page' slug=data.slug %}" class="">
                     <img src="{{data.image_url}}" class="realisation-image mx-auto d-flex" alt="Realization-Image">
                     <h5 class="objects-text">{{ data.object }}</h5>
                 </a>

@@ -80,8 +80,12 @@ class RealisationsPageView(View):
 
 class RealisationPageView(View):
     def get(self, request, slug):
-        print(slug)
-        return render(request, "candelight_website/realisation_page.html")
+        realisation_object = RealisationsProject.objects.get(slug=slug)
+        realisation_photos = realisation_object.realisationsphotos_set.all()
+        return render(request, "candelight_website/realisation_page.html", {
+            "realisation_object": realisation_object,
+            "realisation_photos": realisation_photos,
+        })
 
 
 class ContactPageView(View):
