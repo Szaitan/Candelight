@@ -4,17 +4,12 @@
 {% block title %}Home{% endblock %}
 
 {% block css_files %}
-<link rel="stylesheet" href="{% static 'candelight_website/main_page/css/main_page.css' %}">
+    <link rel="stylesheet" href="{% static 'candelight_website/main_page/css/main_page.css' %}">
 {% endblock %}
 
 {% block content %}
-<div class="navigation-bar">
-    <div class="container">
-        <div class="row">
-            {% include "candelight_website/header.html" %}
-        </div>
-    </div>
-</div>
+
+{% include "candelight_website/header.html" %}
 
 <div id="MainPageCarousel" class="carousel slide carousel-fade mp-carousel" data-bs-ride="carousel">
     <div class="carousel-inner text-adaptation">

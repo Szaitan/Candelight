@@ -1,14 +1,16 @@
 .navigation-bar {
-    background-color: #fffff;
     border-style: solid;
-    border-width: 0.5px;
+    border-width: 0 0 0.5px 0;
     border-color: lightgrey;
-    color: black;
 }
 
 .logotype {
     font-family: 'Sawarabi Gothic', sans-serif;
     font-size: 1.2em;
+    color: black;
+}
+
+.logotype: hover {
     color: black;
 }
 
@@ -23,6 +25,7 @@
     text-decoration: underline;
     text-decoration-thickness: 2px;
     text-decoration-color: red;
+    color: red;
 }
 
 .footer-bar {
