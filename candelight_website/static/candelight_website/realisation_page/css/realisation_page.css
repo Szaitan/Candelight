@@ -1,35 +1,34 @@
 ul {
-    list-style-type: none; /* Remove bullets */
-    padding: 0; /* Remove padding */
-    margin: 0; /* Remove margins */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
 .first-container-img {
     width: 50%;
-    height: 50%; /* Use 100% height to fill the container */
-    object-fit: fit; /* Maintain aspect ratio and cover the entire container */
+    height: 50%;
+    object-fit: fit;
 }
 
 .small-photos-div {
-    width: 22vh; /* Adjust this value as needed */
-    height: 22vh; /* Fixed height for uniformity */
-    object-fit: cover; /* Maintain aspect ratio and cover the entire container */
-    transition: border-color 0.3s, transform 0.3s; /* Smooth transition on hover */
+    width: 22vh;
+    height: 22vh;
+    object-fit: cover;
+    transition: border-color 0.3s, transform 0.3s;
 }
 
 .small-photos {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+    object-fit: cover;
 }
 
 .small-photos-div:hover {
-    transform: scale(1.05); /* Slight scaling effect on hover */
+    transform: scale(1.05);
     cursor: zoom-in;
 }
 
 
-/* Add this to your CSS file or style tag */
 .modal {
     display: flex;
     position: fixed;
@@ -37,7 +36,7 @@ ul {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+    background-color: rgba(0, 0, 0, 0.7);
     justify-content: center;
     align-items: center;
 }
