@@ -18,27 +18,27 @@
 
 <div class="container">
     <div class="row">
-        <h5>{{realisation_object.object}}</h5>
+        <h3 class="mt-3">{{realisation_object.object}}</h3>
         <ul>
             <li>
-                <span>Aranżacja: {{realisation_object.arrangement}}</span>
+                <h5>Aranżacja: {{realisation_object.arrangement}}</h5>
             </li>
             {% if realisation_object.design_office == "" %}
             <li>
-                <span>Biuro Projektowe: N/D</span>
+                <h5>Biuro Projektowe: ...</h5>
             </li>
             {% else %}
             <li>
-                <span>Biuro Projektowe {{realisation_object.design_office}}</span>
+                <h5>Biuro Projektowe {{realisation_object.design_office}}</h5>
             </li>
             {% endif %}
             {% if realisation_object.photo == "" %}
             <li>
-                <span>Zdjęcia: N/D</span>
+                <h5>Autor Zdjęcia: ...</h5>
             </li>
             {% else %}
             <li>
-                <span>Zdjęcia: {{realisation_object.arrangement}}</span>
+                <h5>Zdjęcia: {{realisation_object.arrangement}}</h5>
             </li>
             {% endif %}
         </ul>
@@ -47,9 +47,11 @@
 
 <hr>
 
-<div class="container">
-    <div class="row d-flex justify-content-center">
-        <img src="{{ realisation_object.image.url }}" class="first-container-img" alt="realisation-first-image">
+<div class="first-container-div">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <img src="{{ realisation_object.image.url }}" class="first-container-img" alt="realisation-first-image">
+        </div>
     </div>
 </div>
 
