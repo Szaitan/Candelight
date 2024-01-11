@@ -34,8 +34,8 @@ a {
 
 .realisation-image {
     max-width: 100%;
-    height: 30vh; /* Set a fixed height */
-    object-fit: cover; /* Scale the image to cover the container, preserving aspect ratio */
+    height: 25vh; /* Set a fixed height */
+    object-fit: fit; /* Scale the image to cover the container, preserving aspect ratio */
 }
 
 .realisation-image:hover {
