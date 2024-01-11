@@ -66,19 +66,16 @@
 
         clickableImages.forEach(function (image) {
             image.addEventListener('click', function () {
-                // Get the source of the clicked image
+
                 var imageUrl = image.getAttribute('data-image-src');
                 console.log('Clicked image URL:', imageUrl);
 
-                // Show the modal
                 showImageModal(imageUrl);
             });
         });
 
         function showImageModal(imageUrl) {
-            console.log('Showing modal for image URL:', imageUrl);
 
-            // Create the modal container
             var modal = document.createElement('div');
             modal.className = 'modal';
 
