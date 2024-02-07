@@ -4,13 +4,13 @@
     border-color: lightgrey;
 }
 
+.navbar-toggler{
+background-color: #333333;
+}
+
 .logotype {
     font-family: 'Sawarabi Gothic', sans-serif;
     font-size: 1.2em;
-    color: black;
-}
-
-.logotype: hover {
     color: black;
 }
 
