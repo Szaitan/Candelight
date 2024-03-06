@@ -5,6 +5,12 @@ from candelight_website.models import RealisationsType, RealisationsProject, Pro
 # Register your models here.
 
 
+class RealisationPhotosInline(admin.TabularInline):
+    model = RealisationsPhotos
+    readonly_fields = ()
+    extra = 1
+
+
 class RealisationsTypeAdmin(admin.ModelAdmin):
     def delete_queryset(self, request, queryset):
         for obj in queryset:
@@ -15,6 +21,7 @@ class RealisationsProjectAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("object",)}
     list_filter = ("arrangement", "object", "category")
     list_display = ("arrangement", "object", "category")
+    inlines = [RealisationPhotosInline]
 
     def delete_queryset(self, request, queryset):
         for obj in queryset:
@@ -54,3 +61,7 @@ admin.site.register(RealisationsPhotos, RealisationsPhotosAdmin)
 admin.site.register(ProductsInternalExternal, ProductsInternalExternalAdmin)
 admin.site.register(ProductsSubgroup, ProductsSubgroupAdmin)
 admin.site.register(ProductsProduct, ProductsProductsAdmin)
+
+
+
+

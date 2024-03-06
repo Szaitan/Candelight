@@ -32,7 +32,7 @@ def get_realizations(request, type_id):
 
 
 def get_products(request, type_id):
-    if type_id == "Wewnętrzne" or type_id == "Zewnętrzne":
+    if type_id == "Internal" or type_id == "Zewnętrzne":
         products = ProductsProduct.objects.filter(main_group__name=type_id).order_by("number")
     elif type_id == "All":
         products = ProductsProduct.objects.all().order_by("number")
