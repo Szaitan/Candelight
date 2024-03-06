@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.safestring import mark_safe
 
 # Create your models here.
 
@@ -53,6 +54,12 @@ class RealisationsPhotos(models.Model):
 
     def __str__(self):
         return f"{self.main_object}"
+
+    def photo_tag(self):
+        if self.photo.url is not None:
+            return mark_safe('<img src="{}" height="50"/>'.format(self.photo.url))
+        else:
+            return ""
 
 
 class ProductsInternalExternal(models.Model):

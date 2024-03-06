@@ -7,7 +7,7 @@ from candelight_website.models import RealisationsType, RealisationsProject, Pro
 
 class RealisationPhotosInline(admin.TabularInline):
     model = RealisationsPhotos
-    readonly_fields = ()
+    readonly_fields = ('id', 'photo_tag',)
     extra = 1
 
 
