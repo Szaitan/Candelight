@@ -34,7 +34,6 @@ def get_realizations(request, type_id):
 
 def get_products(request, type_id):
     type_id_split = type_id.split(maxsplit=1)
-    print(type_id_split)
     if type_id_split[0] == "undefined":
         if type_id_split[1] == "Internal" or type_id_split[1] == "Wewnętrzne":
             products = ProductsProduct.objects.filter(main_group__name=type_id_split[1]).order_by("number")

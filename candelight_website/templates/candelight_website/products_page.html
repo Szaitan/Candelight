@@ -82,13 +82,10 @@
             $(this).addClass('active');
 
             let typeSubgroup = $(this).data('type-subgroup');
-            console.log(typeSubgroup);
 
             var typeId = $(this).data('type-id');
-            console.log('Type ID:', typeId);
 
             let test = typeSubgroup + " " + typeId
-            console.log(test);
 
             // Update the header text with the clicked button's text
             $('#products-header').text($(this).text());
