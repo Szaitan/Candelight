@@ -7,8 +7,12 @@ from candelight_website.models import RealisationsType, RealisationsProject, Pro
 
 class RealisationPhotosInline(admin.TabularInline):
     model = RealisationsPhotos
-    readonly_fields = ('id', 'photo_tag',)
+    readonly_fields = ('id_display', 'photo_tag',)
     extra = 1
+
+    def id_display(self, obj=None):
+        return obj.id
+    id_display.short_description = 'ID'
 
 
 class RealisationsTypeAdmin(admin.ModelAdmin):
