@@ -8,6 +8,7 @@ import os
 import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
+from django.db.models import Q
 
 
 # Create your views here.
@@ -32,12 +33,27 @@ def get_realizations(request, type_id):
 
 
 def get_products(request, type_id):
-    if type_id == "Internal" or type_id == "Zewnętrzne":
-        products = ProductsProduct.objects.filter(main_group__name=type_id).order_by("number")
-    elif type_id == "All":
-        products = ProductsProduct.objects.all().order_by("number")
+    type_id_split = type_id.split(maxsplit=1)
+    print(type_id_split)
+    if type_id_split[0] == "undefined":
+        if type_id_split[1] == "Internal" or type_id_split[1] == "Wewnętrzne":
+            products = ProductsProduct.objects.filter(main_group__name=type_id_split[1]).order_by("number")
+        elif type_id_split[1] == "External" or type_id_split[1] == "Zewnętrzne":
+            products = ProductsProduct.objects.filter(main_group__name=type_id_split[1]).order_by("number")
+        elif type_id_split[1] == "All":
+            products = ProductsProduct.objects.all().order_by("number")
     else:
-        products = ProductsProduct.objects.filter(sub_group__name=type_id)
+        products = ProductsProduct.objects.filter(Q(main_group__name=type_id_split[0]) & Q(sub_group__name=type_id_split[1])).order_by("number")
+
+    # Original filtration code
+    # if type_id == "Internal" or type_id == "Wewnętrzne":
+    #     products = ProductsProduct.objects.filter(main_group__name=type_id).order_by("number")
+    # elif type_id == "External" or type_id == "Zewnętrzne":
+    #     products = ProductsProduct.objects.filter(main_group__name=type_id).order_by("number")
+    # elif type_id == "All":
+    #     products = ProductsProduct.objects.all().order_by("number")
+    # else:
+    #     products = ProductsProduct.objects.filter(sub_group__name=type_id)
 
     products_data = [{'name': product.name,
                       'main_image': product.main_image.url} for product in products]
