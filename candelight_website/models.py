@@ -14,7 +14,7 @@ class RealisationsType(models.Model):
         realisations_projects = RealisationsProject.objects.filter(category=self)
         for r_project in realisations_projects:
             r_project.delete()
-
+        # this is test
         super(RealisationsType, self).delete(*args, **kwargs)
 
 
