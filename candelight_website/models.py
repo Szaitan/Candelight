@@ -18,6 +18,7 @@ class RealisationsType(models.Model):
         super(RealisationsType, self).delete(*args, **kwargs)
 
 
+
 class RealisationsProject(models.Model):
     object = models.CharField(max_length=75)
     arrangement = models.CharField(max_length=75)
