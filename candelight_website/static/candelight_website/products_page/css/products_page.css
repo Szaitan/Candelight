@@ -3,8 +3,8 @@
 }
 
 .product-div {
-    width: 24vh;
-    height: 25vh;
+    width: 19vh;
+    height: 22vh;
     margin-bottom: 10px;
     background-color: #e6e6e6;
 }
@@ -19,7 +19,7 @@
 
 .product-img {
     max-width: 100%;
-    height: 22vh;
+    height: 19vh;
     object-fit: fit;
 }
 .product-text {
