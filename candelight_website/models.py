@@ -11,9 +11,9 @@ class RealisationsType(models.Model):
         return f"{self.type}"
 
     def delete(self, *args, **kwargs):
-        products_products = RealisationsProject.objects.filter(category=self)
-        for product in products_products:
-            product.delete()
+        realisations_projects = RealisationsProject.objects.filter(category=self)
+        for r_project in realisations_projects:
+            r_project.delete()
 
         super(RealisationsType, self).delete(*args, **kwargs)
 
