@@ -15,3 +15,4 @@ License
 ------------------------------------------------------------------------------------------------------------
 Copyright (C) 2024 Michał Krepiniewicz. All rights reserved.
 This code may not be reproduced, distributed, or used for any commercial purposes without explicit written permission from the author.
+
